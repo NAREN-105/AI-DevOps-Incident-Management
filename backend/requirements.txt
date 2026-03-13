@@ -1,0 +1,8 @@
+flask
+flask-cors
+flask-jwt-extended
+psycopg2-binary
+scikit-learn
+pandas
+numpy
+python-dotenv
