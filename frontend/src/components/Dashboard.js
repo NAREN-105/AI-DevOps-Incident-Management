@@ -11,7 +11,8 @@ function Dashboard() {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
-  useEffect(() => { fetchIncidents(); }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => { fetchIncidents(); }, []);
 
   const fetchIncidents = async () => {
     try {
