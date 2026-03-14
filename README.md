@@ -20,6 +20,7 @@ The interesting part is that the system uses a basic AI model to automatically p
 - All incidents stored in PostgreSQL database
 - Clean dark-themed UI built with React
 
+
 ## Tech Stack
 
 - Frontend: React.js with Recharts for data visualization
@@ -27,6 +28,7 @@ The interesting part is that the system uses a basic AI model to automatically p
 - Database: PostgreSQL
 - Authentication: JWT tokens
 - AI: Keyword-based severity prediction using scikit-learn logic
+
 
 ## How to Run Locally
 
@@ -48,6 +50,7 @@ npm start
 
 
 Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Also create a `.env` file inside the backend folder with your database credentials.
+
 
 
 ## How It Works
