@@ -2,11 +2,13 @@
 
 A web-based incident management system built to help IT teams track and manage system issues efficiently. Instead of calling managers or sending emails when something breaks, engineers can just log the incident here and everyone stays updated in real time.
 
+
 ## What This Project Does
 
 When something goes wrong in an IT environment like a server crash, network failure, or security issue, engineers need a way to report it quickly and make sure the right people are aware. This system solves that problem by giving teams a simple dashboard where incidents can be created, tracked, and resolved.
 
 The interesting part is that the system uses a basic AI model to automatically predict how serious an incident is based on the words used in the description. So if someone types "server is down and website is not loading", the system will automatically mark it as Critical without the engineer having to decide that manually.
+
 
 ## Features
 
@@ -44,7 +46,9 @@ npm install
 npm start
 ```
 
+
 Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Also create a `.env` file inside the backend folder with your database credentials.
+
 
 ## How It Works
 
@@ -56,9 +60,11 @@ Make sure PostgreSQL is running and create a database called `incident_db` befor
 6. Once fixed, the status is updated to Resolved
 7. Manager can see everything on the dashboard including charts
 
+
 ## Why I Built This
 
 I wanted to build something that actually solves a real problem. In most companies, incident reporting is still done through emails or phone calls which makes it hard to track what is happening and who is responsible. This project is a simplified version of tools like Jira and ServiceNow that big companies use every day.
+
 
 ## Future Improvements
 
