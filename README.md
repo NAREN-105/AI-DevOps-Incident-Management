@@ -52,7 +52,6 @@ npm start
 Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Also create a `.env` file inside the backend folder with your database credentials.
 
 
-
 ## How It Works
 
 1. Engineer logs in with their credentials
@@ -63,13 +62,12 @@ Make sure PostgreSQL is running and create a database called `incident_db` befor
 6. Once fixed, the status is updated to Resolved
 7. Manager can see everything on the dashboard including charts
 
-
 ## Why I Built This
 
 I wanted to build something that actually solves a real problem. In most companies, incident reporting is still done through emails or phone calls which makes it hard to track what is happening and who is responsible. This project is a simplified version of tools like Jira and ServiceNow that big companies use every day.
 
-
 ## Future Improvements
+
 
 - Email notifications when a critical incident is created
 - Assign incidents to specific team members
