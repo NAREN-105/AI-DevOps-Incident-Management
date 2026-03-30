@@ -61,6 +61,7 @@ Make sure PostgreSQL is running and create a database called `incident_db` befor
 ## Why I Built This
 I wanted to build something that actually solves a real problem. In most companies, incident reporting is still done through emails or phone calls which makes it hard to track what is happening and who is responsible. This project is a simplified version of tools like Jira and ServiceNow that big companies use every day.
 
+
 ## Future Improvements
 - Email notifications when a critical incident is created
 - Assign incidents to specific team members
