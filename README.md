@@ -17,7 +17,6 @@ The interesting part is that the system uses a basic AI model to automatically p
 - All incidents stored in PostgreSQL database
 - Clean dark-themed UI built with React
 
-
 ## Tech Stack
 - Frontend: React.js with Recharts for data visualization
 - Backend: Python Flask with REST API
