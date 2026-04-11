@@ -2,6 +2,7 @@
 A web-based incident management system built to help IT teams track and manage system issues efficiently. Instead of calling managers or sending emails when something breaks, engineers can just log the incident here and everyone stays updated in real time.
 
 
+
 ## What This Project Does
 When something goes wrong in an IT environment like a server crash, network failure, or security issue, engineers need a way to report it quickly and make sure the right people are aware. This system solves that problem by giving teams a simple dashboard where incidents can be created, tracked, and resolved.
 
