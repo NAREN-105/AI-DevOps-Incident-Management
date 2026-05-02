@@ -41,7 +41,6 @@ npm install
 npm start
 ```
 
-
 Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Also create a `.env` file inside the backend folder with your database credentials.
 
 
