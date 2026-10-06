@@ -7,7 +7,10 @@ When something goes wrong in an IT environment like a server crash, network fail
 The interesting part is that the system uses a basic AI model to automatically predict how serious an incident is based on the words used in the description. So if someone types "server is down and website is not loading", the system will automatically mark it as Critical without the engineer having to decide that manually.
 
 ## Features
-- Login system with JWT authentication
+- Role-based login and signup with JWT authentication
+- Separate reporter, technician, manager, and administrator workspaces
+- Automatic least-loaded technician assignment and incident activity history
+- Optional Google sign-in and configurable SMTP notifications
 - Create incidents with title and description
 - AI automatically predicts severity as Critical, High, Medium or Low
 - Dashboard with live charts showing incident distribution
@@ -41,7 +44,30 @@ npm install
 npm start
 ```
 
-Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Also create a `.env` file inside the backend folder with your database credentials.
+Make sure PostgreSQL is running and create a database called `incident_db` before starting the backend. Copy `backend/.env.example` to `backend/.env` and set its database connection and secrets. Apply the workflow migration once from the `backend` folder:
+
+```powershell
+python -c "from pathlib import Path; import psycopg2; from config import Config; conn=psycopg2.connect(Config.DATABASE_URL); cur=conn.cursor(); cur.execute(Path('migrations/001_role_incident_workflow.sql').read_text()); conn.commit(); cur.close(); conn.close()"
+```
+
+New signups require a username, email, and a password of at least 12 characters. They start as reporters. An administrator can promote registered accounts to technician or manager in **Team accounts**. Public signup cannot create elevated roles.
+
+### Demo Login Accounts
+
+| Role | Username | Password |
+| --- | --- | --- |
+| User | `user` | `OpsUser!26-V7q3K` |
+| Administrator | `admin` | `OpsAdmin!26-H8m4R` |
+
+Choose the matching role on the login page. Users can create and view incidents; administrators can also change incident status. Use **Sign up** to create a regular user account; signup requires the configured PostgreSQL database and cannot create administrators. Passwords are stored as hashes. Demo credentials are for local development only. Before deployment, replace them with managed user accounts and set unique `SECRET_KEY` and `JWT_SECRET_KEY` values in the backend environment.
+
+### Email and Google Sign-In
+
+Email notifications are sent only after SMTP is configured in `backend/.env`. Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM`; use your provider's app password. Add organization-wide recipients to `INCIDENT_MANAGER_EMAILS` as a comma-separated list. New incidents alert managers, assignments alert technicians, and status changes/resolution notify the reporter; resolution also alerts managers.
+
+To enable Google sign-in, create a Google OAuth web client. Set its client ID as `GOOGLE_CLIENT_ID` in `backend/.env` and `REACT_APP_GOOGLE_CLIENT_ID` in `frontend/.env.local`. Add `http://localhost:3001` (or the actual frontend origin) to the OAuth client's authorized JavaScript origins, then restart both apps. Google-created accounts receive the reporter role; administrators can promote them later.
+
+Without provider credentials, Google sign-in and email delivery stay disabled; local username/password sign-in and the incident workflow remain available.
 
 
 
@@ -62,4 +88,3 @@ I wanted to build something that actually solves a real problem. In most compani
 - Assign incidents to specific team members
 - Add Docker support for easy deployment
 - Improve AI model with real machine learning instead of keyword matching
-- Add user roles like Admin, Manager and Engineer
