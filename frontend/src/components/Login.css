@@ -171,6 +171,33 @@
   margin: 0 0 8px;
 }
 
+.signup-role {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 17px;
+  padding: 11px 12px;
+  border-left: 3px solid #789066;
+  background: #e8ece4;
+}
+
+.signup-role span {
+  color: #69786d;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.9px;
+}
+
+.signup-role strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.signup-role small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
 .login-input {
   width: 100%;
   min-height: 46px;
@@ -304,6 +331,21 @@
 
 .google-button-unconfigured:hover {
   background: #e8ece6;
+}
+
+.google-button-unconfigured:disabled {
+  background: #ecefea;
+  color: #78827b;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.google-unavailable > p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: center;
 }
 
 .google-mark {

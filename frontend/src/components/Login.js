@@ -201,6 +201,13 @@ function Login() {
               />
             </>
           )}
+          {isSignUp && (
+            <div className="signup-role" aria-label="Your initial account role is User or Reporter">
+              <span>INITIAL ACCOUNT ROLE</span>
+              <strong>User / Reporter</strong>
+              <small>An administrator can assign Technician or Manager after signup.</small>
+            </div>
+          )}
           <label className="field-label" htmlFor="password">Password</label>
           <input
             className="login-input"
@@ -241,14 +248,13 @@ function Login() {
           {GOOGLE_CLIENT_ID ? (
             <div className="google-button" ref={googleButtonRef} />
           ) : (
-            <button
-              className="google-button google-button-unconfigured"
-              type="button"
-              onClick={() => setError('Google sign-in is not configured. Set REACT_APP_GOOGLE_CLIENT_ID and GOOGLE_CLIENT_ID first.')}
-            >
-              <span className="google-mark" aria-hidden="true">G</span>
-              Continue with Google
-            </button>
+            <div className="google-unavailable">
+              <button className="google-button google-button-unconfigured" type="button" disabled>
+                <span className="google-mark" aria-hidden="true">G</span>
+                Continue with Google
+              </button>
+              <p role="note">Google sign-in is unavailable until OAuth is configured on this app.</p>
+            </div>
           )}
           <p className="auth-switch">
             {isSignUp ? 'Already have an account?' : 'New to the workspace?'}
