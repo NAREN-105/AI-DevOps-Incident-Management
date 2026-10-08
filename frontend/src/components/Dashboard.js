@@ -3,7 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || (
+  process.env.NODE_ENV === 'production'
+    ? 'https://ai-devops-incident-management.onrender.com/api'
+    : 'http://127.0.0.1:5000/api'
+);
 const STATUS_OPTIONS = ['Open', 'Assigned', 'In Progress', 'Resolved'];
 const ROLE_OPTIONS = ['user', 'technician', 'manager'];
 
